@@ -3,34 +3,73 @@
 #include <vector>
 using namespace std;
 
-int main() {
-    vector<vector <int> > coordinate = {
-        {0,2},
-        {1,1},
-        {1,3},
-        {2,0},
-        {2,2},
-        {2,4},
-    };
-    vector<vector <int> > co = {
-        {0,0},
-        {0,4},
-        {1,1},
-        {1,3},
-        {2,2},
-        {3,1},
-        {3,3},
-        {4,0},
-        {4,4}
-    };
+class BattleCharacter
+{
+public:
+    virtual int* GetState() = 0;
+};
 
-    vector<vector <int> > a = {
-        {0,0},{0,2},{0,4},{0,6},{0,8},
-        {1,1},{1,3},{1,5},{1,7},{1,9},
-    };
+enum Abnormal
+{
+    NORMAL,
+    POISON,     // 00000001
+    PARALYSIS,  // 00000010
+    SLEEP = 4,  // 00000100
+};
 
-    PrintCoordinate p;
-    p.Print(co);
-    p.Print(coordinate);
-    p.Print(a);
+class AbnormalState
+{
+public:
+    static void SetState(BattleCharacter& target, int abnormal) { *target.GetState() |= abnormal; }
+    static void RemoveState(BattleCharacter& target, int abnormal) { *target.GetState() &= ~abnormal; }
+    static bool IsState(BattleCharacter& target, int abnormal) { return (*target.GetState() & abnormal) == abnormal; }
+    static bool IsNormal(BattleCharacter& target) { return *target.GetState() == 0; }
+};
+
+class Brave : public BattleCharacter
+{
+
+public:
+    Brave() : m_abnormalStatus(NORMAL) {}
+    int* GetState() { return &m_abnormalStatus; }
+
+    void CurrentStatus()
+    {
+        if (AbnormalState::IsNormal(*this)) {
+            cout << "通常" << endl;
+        }
+
+        if (AbnormalState::IsState(*this, POISON)) {
+            cout << "毒" << endl;
+        }
+
+        if (AbnormalState::IsState(*this, PARALYSIS)) {
+            cout << "麻痺" << endl;
+        }
+
+        if (AbnormalState::IsState(*this, SLEEP)) {
+            cout << "睡眠" << endl;
+        }
+
+        cout << endl;
+    }
+
+private:
+    int m_abnormalStatus;
+};
+
+int main()
+{
+    Brave brave;
+    brave.CurrentStatus();
+
+    AbnormalState::SetState(brave, POISON);
+    brave.CurrentStatus();
+
+    AbnormalState::SetState(brave, PARALYSIS);
+    brave.CurrentStatus();
+
+    AbnormalState::RemoveState(brave, POISON);
+    AbnormalState::SetState(brave, SLEEP);
+    brave.CurrentStatus();
 }

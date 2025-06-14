@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BattleCharacter.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PrintCoordinate.cpp" />
   </ItemGroup>
