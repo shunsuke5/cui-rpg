@@ -9,12 +9,17 @@ class State
 public:
     static void SetState(BattleCharacter& target, Abnormal abnormal)
     {
-        target.GetState() = (target.GetState() | abnormal);
+        target.SetState((target.GetState() | abnormal));
     }
 
     static void RemoveState(BattleCharacter& target, Abnormal abnormal)
     {
-        target.GetState() = (target.GetState() & ~abnormal);
+        target.SetState((target.GetState() & ~abnormal));
+    }
+
+    static void SetNormal(BattleCharacter& target)
+    {
+        target.SetState(Abnormal::NORMAL);
     }
 
     static bool IsState(BattleCharacter& target, Abnormal abnormal)

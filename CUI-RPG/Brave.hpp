@@ -8,12 +8,13 @@ class Brave : public BattleCharacter
 {
 
 public:
-    Brave() : m_abnormalStatus(Abnormal::NORMAL) {}
+    Brave() : m_state(Abnormal::NORMAL) {}
     ~Brave() {}
-    Abnormal& GetState() override { return m_abnormalStatus; }
+    Abnormal& GetState() override { return m_state; }
+    void SetState(Abnormal state) override { m_state = state; }
 
 private:
-    Abnormal m_abnormalStatus;
+    Abnormal m_state;
 };
 
 #endif // !BRAVE_H_

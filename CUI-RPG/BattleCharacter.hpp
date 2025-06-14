@@ -7,6 +7,7 @@ class BattleCharacter
 {
 public:
     virtual Abnormal& GetState() = 0;
+    virtual void SetState(Abnormal state) = 0;
 };
 
 #endif // !BATTLE_CHARACTER_H_
