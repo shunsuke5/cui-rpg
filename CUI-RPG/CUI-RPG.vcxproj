@@ -127,12 +127,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BattleCharacter.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PrintCoordinate.cpp" />
+    <ClCompile Include="Abnormal.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Abnormal.hpp" />
+    <ClInclude Include="BattleCharacter.hpp" />
+    <ClInclude Include="Brave.hpp" />
     <ClInclude Include="PrintCoordinate.hpp" />
+    <ClInclude Include="State.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

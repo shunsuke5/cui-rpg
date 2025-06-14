@@ -13,21 +13,51 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="ヘッダー ファイル\battle">
+      <UniqueIdentifier>{c4d8dd1e-37c8-4229-b299-df6329dcedcd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\state">
+      <UniqueIdentifier>{4a8afbf3-ac4a-4044-b0a2-c458b23b53d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\battle">
+      <UniqueIdentifier>{b8df138a-dc8a-4154-a241-4c90daca38fd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\display">
+      <UniqueIdentifier>{4f04732c-5da8-4c31-966a-dedef2fdab9c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\display">
+      <UniqueIdentifier>{040ce437-b5b5-4002-ac2a-f5f706cbd520}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\state">
+      <UniqueIdentifier>{c830584e-34f8-4b7e-aefc-da3300644f94}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="PrintCoordinate.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
-    <ClCompile Include="BattleCharacter.cpp">
-      <Filter>ソース ファイル</Filter>
+    <ClCompile Include="PrintCoordinate.cpp">
+      <Filter>ソース ファイル\display</Filter>
+    </ClCompile>
+    <ClCompile Include="Abnormal.cpp">
+      <Filter>ソース ファイル\state</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BattleCharacter.hpp">
+      <Filter>ヘッダー ファイル\battle</Filter>
+    </ClInclude>
     <ClInclude Include="PrintCoordinate.hpp">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\display</Filter>
+    </ClInclude>
+    <ClInclude Include="Abnormal.hpp">
+      <Filter>ヘッダー ファイル\state</Filter>
+    </ClInclude>
+    <ClInclude Include="Brave.hpp">
+      <Filter>ヘッダー ファイル\battle</Filter>
+    </ClInclude>
+    <ClInclude Include="State.hpp">
+      <Filter>ヘッダー ファイル\state</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

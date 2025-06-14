@@ -1,75 +1,23 @@
 #include "PrintCoordinate.hpp"
+#include "Brave.hpp"
+#include "State.hpp"
+#include "Abnormal.hpp"
 #include <iostream>
 #include <vector>
 using namespace std;
 
-class BattleCharacter
-{
-public:
-    virtual int* GetState() = 0;
-};
-
-enum Abnormal
-{
-    NORMAL,
-    POISON,     // 00000001
-    PARALYSIS,  // 00000010
-    SLEEP = 4,  // 00000100
-};
-
-class AbnormalState
-{
-public:
-    static void SetState(BattleCharacter& target, int abnormal) { *target.GetState() |= abnormal; }
-    static void RemoveState(BattleCharacter& target, int abnormal) { *target.GetState() &= ~abnormal; }
-    static bool IsState(BattleCharacter& target, int abnormal) { return (*target.GetState() & abnormal) == abnormal; }
-    static bool IsNormal(BattleCharacter& target) { return *target.GetState() == 0; }
-};
-
-class Brave : public BattleCharacter
-{
-
-public:
-    Brave() : m_abnormalStatus(NORMAL) {}
-    int* GetState() { return &m_abnormalStatus; }
-
-    void CurrentStatus()
-    {
-        if (AbnormalState::IsNormal(*this)) {
-            cout << "通常" << endl;
-        }
-
-        if (AbnormalState::IsState(*this, POISON)) {
-            cout << "毒" << endl;
-        }
-
-        if (AbnormalState::IsState(*this, PARALYSIS)) {
-            cout << "麻痺" << endl;
-        }
-
-        if (AbnormalState::IsState(*this, SLEEP)) {
-            cout << "睡眠" << endl;
-        }
-
-        cout << endl;
-    }
-
-private:
-    int m_abnormalStatus;
-};
-
 int main()
 {
     Brave brave;
-    brave.CurrentStatus();
+    State::SetState(brave, Abnormal::POISON);
+    if (State::IsState(brave, Abnormal::POISON)) { cout << "毒" << endl; }
 
-    AbnormalState::SetState(brave, POISON);
-    brave.CurrentStatus();
+    State::SetState(brave, Abnormal::PARALYSIS);
+    if (State::IsState(brave, Abnormal::POISON) && State::IsState(brave, Abnormal::PARALYSIS)) { cout << "毒、麻痺" << endl; }
 
-    AbnormalState::SetState(brave, PARALYSIS);
-    brave.CurrentStatus();
+    State::RemoveState(brave, Abnormal::POISON);
+    if (State::IsState(brave, Abnormal::PARALYSIS)) { cout << "麻痺" << endl; }
 
-    AbnormalState::RemoveState(brave, POISON);
-    AbnormalState::SetState(brave, SLEEP);
-    brave.CurrentStatus();
+    State::RemoveState(brave, Abnormal::PARALYSIS);
+    if (State::IsNormal(brave)) { cout << "通常" << endl; }
 }
