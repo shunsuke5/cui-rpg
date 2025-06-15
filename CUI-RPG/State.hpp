@@ -1,36 +1,16 @@
-#ifndef STATE_H_
-#define STATE_H_
+#ifndef ABNORMAL_H_
+#define ABNORMAL_H_
 
-#include "BattleCharacter.hpp"
-#include "Abnormal.hpp"
-
-class State
+enum class State
 {
-public:
-    static void SetState(BattleCharacter& target, Abnormal abnormal)
-    {
-        target.SetState((target.GetState() | abnormal));
-    }
-
-    static void RemoveState(BattleCharacter& target, Abnormal abnormal)
-    {
-        target.SetState((target.GetState() & ~abnormal));
-    }
-
-    static void SetNormal(BattleCharacter& target)
-    {
-        target.SetState(Abnormal::NORMAL);
-    }
-
-    static bool IsState(BattleCharacter& target, Abnormal abnormal)
-    {
-        return (target.GetState() & abnormal) == abnormal;
-    }
-
-    static bool IsNormal(BattleCharacter& target)
-    {
-        return target.GetState() == Abnormal::NORMAL;
-    }
+    NORMAL,
+    POISON,     // 00000001
+    PARALYSIS,  // 00000010
+    SLEEP = 4   // 00000100
 };
 
-#endif // !STATE_H_
+State operator|(State target, State state);
+State operator&(State target, State state);
+State operator~(State state);
+
+#endif // !ABNORMAL_H_

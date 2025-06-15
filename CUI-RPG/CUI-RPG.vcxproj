@@ -129,14 +129,15 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PrintCoordinate.cpp" />
-    <ClCompile Include="Abnormal.cpp" />
+    <ClCompile Include="State.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Abnormal.hpp" />
+    <ClInclude Include="Enemy.hpp" />
+    <ClInclude Include="State.hpp" />
     <ClInclude Include="BattleCharacter.hpp" />
     <ClInclude Include="Brave.hpp" />
     <ClInclude Include="PrintCoordinate.hpp" />
-    <ClInclude Include="State.hpp" />
+    <ClInclude Include="StateOperation.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
