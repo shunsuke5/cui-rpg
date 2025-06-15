@@ -39,7 +39,7 @@
     <ClCompile Include="PrintCoordinate.cpp">
       <Filter>ソース ファイル\display</Filter>
     </ClCompile>
-    <ClCompile Include="Abnormal.cpp">
+    <ClCompile Include="State.cpp">
       <Filter>ソース ファイル\state</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,14 +50,17 @@
     <ClInclude Include="PrintCoordinate.hpp">
       <Filter>ヘッダー ファイル\display</Filter>
     </ClInclude>
-    <ClInclude Include="Abnormal.hpp">
+    <ClInclude Include="State.hpp">
       <Filter>ヘッダー ファイル\state</Filter>
     </ClInclude>
     <ClInclude Include="Brave.hpp">
       <Filter>ヘッダー ファイル\battle</Filter>
     </ClInclude>
-    <ClInclude Include="State.hpp">
+    <ClInclude Include="StateOperation.hpp">
       <Filter>ヘッダー ファイル\state</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy.hpp">
+      <Filter>ヘッダー ファイル\battle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

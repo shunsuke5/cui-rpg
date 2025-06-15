@@ -2,19 +2,13 @@
 #define BRAVE_H_
 
 #include "BattleCharacter.hpp"
-#include "Abnormal.hpp"
 
 class Brave : public BattleCharacter
 {
-
 public:
-    Brave() : m_state(Abnormal::NORMAL) {}
+    Brave(string name, ability_t hp, ability_t mp, ability_t attack, ability_t defense, ability_t speed)
+        : BattleCharacter(name, hp, mp, attack, defense, speed) {}
     ~Brave() {}
-    Abnormal& GetState() override { return m_state; }
-    void SetState(Abnormal state) override { m_state = state; }
-
-private:
-    Abnormal m_state;
 };
 
 #endif // !BRAVE_H_
