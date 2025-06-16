@@ -1,8 +1,9 @@
 #ifndef STATE_H_
 #define STATE_H_
 
-#include "BattleCharacter.hpp"
 #include "State.hpp"
+
+class BattleCharacter;
 
 class StateOperation
 {

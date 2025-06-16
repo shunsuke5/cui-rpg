@@ -47,7 +47,7 @@ public:
         return receiver.IsDefense() ? damage / 2 : damage;
     }
 
-    void Turn(BattleCharacter other)
+    void Turn(BattleCharacter& other)
     {
         UnDefense();
 
