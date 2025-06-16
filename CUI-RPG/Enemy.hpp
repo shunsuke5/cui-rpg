@@ -9,6 +9,11 @@ public:
     Enemy(string name, ability_t hp, ability_t mp, ability_t attack, ability_t defense, ability_t speed)
         : BattleCharacter(name, hp, mp, attack, defense, speed) {}
     ~Enemy() {}
+
+    void Action(BattleCharacter brave)
+    {
+        Attack(brave);
+    }
 };
 
 #endif // !ENEMY_H_
