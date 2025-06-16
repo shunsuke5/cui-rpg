@@ -2,6 +2,7 @@
 #include "Brave.hpp"
 #include "Enemy.hpp"
 #include "State.hpp"
+#include "StateOperation.hpp"
 #include "BattleCharacter.hpp"
 #include <iostream>
 #include <vector>
@@ -11,14 +12,15 @@ int main()
 {
     BattleCharacter brave("kamei", 10, 5, 5, 5, 5);
     BattleCharacter enemy("enemy", 7, 4, 3, 3, 8);
+    StateOperation::SetState(brave, State::POISON);
 
     while (!brave.IsDie() && !enemy.IsDie()) {
         if (brave.IsFaster(enemy)) {
-            brave.Attack(enemy);
-            enemy.Attack(brave);
+            brave.Turn(enemy);
+            enemy.Turn(brave);
         } else {
-            enemy.Attack(brave);
-            brave.Attack(enemy);
+            enemy.Turn(brave);
+            brave.Turn(enemy);
         }
     }
 }

@@ -4,9 +4,9 @@
 enum class State
 {
     NORMAL,
-    POISON,     // 00000001
-    PARALYSIS,  // 00000010
-    SLEEP = 4   // 00000100
+    POISON = 1 << 0,
+    PARALYSIS = 1 << 1,
+    SLEEP = 1 << 2
 };
 
 State operator|(State target, State state);
