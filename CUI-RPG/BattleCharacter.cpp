@@ -1,7 +1,7 @@
 #include "BattleCharacter.hpp"
 #include "StateOperation.hpp"
 
-void BattleCharacter::Turn(BattleCharacter& other)
+bool BattleCharacter::Turn(BattleCharacter& other)
 {
     UnDefense();
 
@@ -17,6 +17,8 @@ void BattleCharacter::Turn(BattleCharacter& other)
     }
 
     if (IsDie()) {
-        // ここでどうバトルの終了を呼び出し元に通知するか？
+        return false;
     }
+
+    return true;
 }

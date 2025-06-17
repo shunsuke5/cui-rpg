@@ -16,11 +16,19 @@ int main()
 
     while (!brave.IsDie() && !enemy.IsDie()) {
         if (brave.IsFaster(enemy)) {
-            brave.Turn(enemy);
-            enemy.Turn(brave);
+            if (!brave.Turn(enemy)) {
+                break;
+            }
+            if (!enemy.Turn(brave)) {
+                break;
+            }
         } else {
-            enemy.Turn(brave);
-            brave.Turn(enemy);
+            if (!enemy.Turn(brave)) {
+                break;
+            }
+            if (!brave.Turn(enemy)) {
+                break;
+            }
         }
     }
 }

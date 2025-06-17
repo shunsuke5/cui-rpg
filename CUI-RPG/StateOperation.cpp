@@ -16,12 +16,12 @@ void StateOperation::SetNormal(BattleCharacter& target)
     target.SetState(State::NORMAL);
 }
 
-bool StateOperation::IsState(BattleCharacter& target, State abnormal)
+bool StateOperation::IsState(const BattleCharacter& target, State abnormal)
 {
     return (target.GetState() & abnormal) == abnormal;
 }
 
-bool StateOperation::IsNormal(BattleCharacter& target)
+bool StateOperation::IsNormal(const BattleCharacter& target)
 {
     return target.GetState() == State::NORMAL;
 }
