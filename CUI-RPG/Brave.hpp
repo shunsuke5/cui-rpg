@@ -13,12 +13,26 @@ public:
 
     void Action(BattleCharacter* enemy)
     {
-        Attack(enemy);
+        int n = 0;
+        std::cout << "1：こうげき　2：ぼうぎょ" << std::endl;
+        std::cout << m_name << "はどうする？ > " << std::flush;
+        std::cin >> n;
+
+        switch (n) {
+        case 1:
+            Attack(enemy);
+            break;
+        case 2:
+            Defense();
+            break;
+        default:
+            break;
+        }
     }
 
     void DiePrint()
     {
-        std::cout << "ゆうしゃはしんでしまった！" << std::endl;
+        std::cout << m_name << "はしんでしまった！" << std::endl;
     }
 };
 

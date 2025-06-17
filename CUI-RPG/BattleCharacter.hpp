@@ -37,6 +37,7 @@ public:
 
     void Attack(BattleCharacter* receiver)
     {
+        std::cout << m_name << "のこうげき！" << std::endl;
         ability_t damage = CalcAttackDamage(receiver);
         receiver->SetBattleHp(receiver->GetBattleHp() - damage);
         std::cout << receiver->GetName() << " に" << damage << "ダメージ" << std::endl;
@@ -54,11 +55,16 @@ public:
 
     void PoisonDamage()
     {
-        SetBattleHp(GetBattleHp() - 4);
-        std::cout << "毒により4ダメージ" << std::endl;
+        int damage = 4;
+        std::cout << m_name << "はどくで" << damage << "ダメージをうけた！" << std::endl;
+        SetBattleHp(GetBattleHp() - damage);
     }
 
-    void Defense() { m_isDefense = true; }
+    void Defense()
+    {
+        std::cout << m_name << "はぼうぎょのかまえをとっている。" << std::endl;
+        m_isDefense = true;
+    }
 
     bool IsDefense() const { return m_isDefense; }
 
