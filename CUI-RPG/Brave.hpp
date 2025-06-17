@@ -2,6 +2,7 @@
 #define BRAVE_H_
 
 #include "BattleCharacter.hpp"
+#include <iostream>
 
 class Brave : public BattleCharacter
 {
@@ -10,9 +11,14 @@ public:
         : BattleCharacter(name, hp, mp, attack, defense, speed) {}
     ~Brave() {}
 
-    void Action(BattleCharacter enemy)
+    void Action(BattleCharacter* enemy)
     {
         Attack(enemy);
+    }
+
+    void DiePrint()
+    {
+        std::cout << "ゆうしゃはしんでしまった！" << std::endl;
     }
 };
 
