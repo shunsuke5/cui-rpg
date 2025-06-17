@@ -48,14 +48,14 @@ public:
         return receiver.IsDefense() ? damage / 2 : damage;
     }
 
-    void Turn(BattleCharacter& other);
+    bool Turn(BattleCharacter& other);
 
     // Brave,Enemyでそれぞれ実装しなければならない
     virtual void Action(BattleCharacter other) {}
 
     void PoisonDamage()
     {
-        m_battleStatus.hp -= 4;
+        SetBattleHp(GetBattleHp() - 4);
         std::cout << "毒により4ダメージ" << std::endl;
     }
 

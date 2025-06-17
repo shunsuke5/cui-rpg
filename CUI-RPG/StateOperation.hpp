@@ -14,9 +14,9 @@ public:
 
     static void SetNormal(BattleCharacter& target);
 
-    static bool IsState(BattleCharacter& target, State abnormal);
+    static bool IsState(const BattleCharacter& target, State abnormal);
 
-    static bool IsNormal(BattleCharacter& target);
+    static bool IsNormal(const BattleCharacter& target);
 };
 
 #endif // !STATE_H_
