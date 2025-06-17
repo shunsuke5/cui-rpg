@@ -10,9 +10,9 @@ using namespace std;
 
 int main()
 {
-    BattleCharacter* brave = new Brave("kamei", 10, 5, 5, 5, 5);
-    BattleCharacter* enemy = new Enemy("enemy", 7, 4, 3, 3, 8);
-    //StateOperation::SetState(brave, State::POISON);
+    BattleCharacter* brave = new Brave("しゅんすけ", 10, 5, 5, 5, 5);
+    BattleCharacter* enemy = new Enemy("てき", 7, 4, 3, 3, 8);
+    StateOperation::SetState(brave, State::POISON);
 
     while (!brave->IsDie() && !enemy->IsDie()) {
         if (brave->IsFaster(enemy)) {
