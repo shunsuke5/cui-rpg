@@ -8,15 +8,15 @@ class BattleCharacter;
 class StateOperation
 {
 public:
-    static void SetState(BattleCharacter& target, State abnormal);
+    static void SetState(BattleCharacter* target, State abnormal);
 
-    static void RemoveState(BattleCharacter& target, State abnormal);
+    static void RemoveState(BattleCharacter* target, State abnormal);
 
-    static void SetNormal(BattleCharacter& target);
+    static void SetNormal(BattleCharacter* target);
 
-    static bool IsState(const BattleCharacter& target, State abnormal);
+    static bool IsState(const BattleCharacter* target, State abnormal);
 
-    static bool IsNormal(const BattleCharacter& target);
+    static bool IsNormal(const BattleCharacter* target);
 };
 
 #endif // !STATE_H_

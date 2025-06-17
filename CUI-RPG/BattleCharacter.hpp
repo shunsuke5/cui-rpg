@@ -35,23 +35,23 @@ public:
 
     virtual ~BattleCharacter() {}
 
-    void Attack(BattleCharacter& receiver)
+    void Attack(BattleCharacter* receiver)
     {
         ability_t damage = CalcAttackDamage(receiver);
-        receiver.SetBattleHp(receiver.GetBattleHp() - damage);
-        std::cout << receiver.GetName() << " に" << damage << "ダメージ" << std::endl;
+        receiver->SetBattleHp(receiver->GetBattleHp() - damage);
+        std::cout << receiver->GetName() << " に" << damage << "ダメージ" << std::endl;
     }
 
-    int CalcAttackDamage(BattleCharacter& receiver)
+    int CalcAttackDamage(BattleCharacter* receiver)
     {
-        ability_t damage = GetBattleAttack() - (receiver.GetBattleDefense() / 2);
-        return receiver.IsDefense() ? damage / 2 : damage;
+        ability_t damage = GetBattleAttack() - (receiver->GetBattleDefense() / 2);
+        return receiver->IsDefense() ? damage / 2 : damage;
     }
 
-    bool Turn(BattleCharacter& other);
+    bool Turn(BattleCharacter* other);
 
-    // Brave,Enemyでそれぞれ実装しなければならない
-    virtual void Action(BattleCharacter other) {}
+    virtual void Action(BattleCharacter* other) = 0;
+    virtual void DiePrint() = 0;
 
     void PoisonDamage()
     {
@@ -61,13 +61,11 @@ public:
 
     void Defense() { m_isDefense = true; }
 
-    void UnDefense() { m_isDefense = false; }
+    bool IsDefense() const { return m_isDefense; }
 
-    bool IsDefense() { return m_isDefense; }
-
-    bool IsFaster(const BattleCharacter& other) const
+    bool IsFaster(const BattleCharacter* other) const
     {
-        return GetBattleSpeed() >= other.GetBattleSpeed();
+        return GetBattleSpeed() >= other->GetBattleSpeed();
     }
 
     bool IsDie() { return GetBattleHp() == 0; }
@@ -94,6 +92,9 @@ public:
     void SetBattleHp(ability_t hp) { m_battleStatus.hp = (hp < 0) ? 0 : hp; }
     void SetBattleDefense(ability_t defense) { m_battleStatus.defense = defense; }
     void SetState(State state) { m_state = state; }
+
+private:
+    void UnDefense() { m_isDefense = false; }
 
 protected:
     string m_name;
