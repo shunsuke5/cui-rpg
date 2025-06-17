@@ -17,7 +17,6 @@ bool BattleCharacter::Turn(BattleCharacter* other)
     }
 
     if (IsDie()) {
-        DiePrint();
         return false;
     }
 

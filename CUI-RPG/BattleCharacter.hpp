@@ -51,7 +51,6 @@ public:
     bool Turn(BattleCharacter* other);
 
     virtual void Action(BattleCharacter* other) = 0;
-    virtual void DiePrint() = 0;
 
     void PoisonDamage()
     {
@@ -68,7 +67,17 @@ public:
         return GetBattleSpeed() >= other->GetBattleSpeed();
     }
 
-    bool IsDie() { return GetBattleHp() == 0; }
+    bool IsDie()
+    {
+        if (GetBattleHp() == 0) {
+            DiePrint();
+            return true;
+        }
+        
+        return false;
+    }
+
+    virtual void DiePrint() = 0;
 
     string GetName() const { return m_name; }
     State& GetState() { return m_state; }
