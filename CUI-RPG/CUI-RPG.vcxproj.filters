@@ -42,6 +42,12 @@
     <ClCompile Include="State.cpp">
       <Filter>ソース ファイル\state</Filter>
     </ClCompile>
+    <ClCompile Include="StateOperation.cpp">
+      <Filter>ソース ファイル\state</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleCharacter.cpp">
+      <Filter>ソース ファイル\battle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BattleCharacter.hpp">
