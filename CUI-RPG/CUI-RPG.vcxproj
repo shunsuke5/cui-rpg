@@ -134,6 +134,8 @@
     <ClCompile Include="StateOperation.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Battle.hpp" />
+    <ClInclude Include="BigBear.hpp" />
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="State.hpp" />
     <ClInclude Include="BattleCharacter.hpp" />
