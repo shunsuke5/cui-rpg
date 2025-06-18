@@ -31,6 +31,21 @@
     <Filter Include="ソース ファイル\state">
       <UniqueIdentifier>{c830584e-34f8-4b7e-aefc-da3300644f94}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\battle\enemy">
+      <UniqueIdentifier>{e8303881-4968-427a-af07-4c865e795628}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\battle\brave">
+      <UniqueIdentifier>{3877ff94-a809-4880-9427-3f6668a7c35a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\battle\enemy\forest">
+      <UniqueIdentifier>{183ab975-2862-49e6-a90b-3e6bf24875d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\event">
+      <UniqueIdentifier>{314ee53a-25a9-42cf-8172-600d832db26e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\event\battle">
+      <UniqueIdentifier>{9c062947-21bc-40f9-93ff-98bfa25f4135}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -59,14 +74,20 @@
     <ClInclude Include="State.hpp">
       <Filter>ヘッダー ファイル\state</Filter>
     </ClInclude>
-    <ClInclude Include="Brave.hpp">
-      <Filter>ヘッダー ファイル\battle</Filter>
-    </ClInclude>
     <ClInclude Include="StateOperation.hpp">
       <Filter>ヘッダー ファイル\state</Filter>
     </ClInclude>
+    <ClInclude Include="Brave.hpp">
+      <Filter>ヘッダー ファイル\battle\brave</Filter>
+    </ClInclude>
     <ClInclude Include="Enemy.hpp">
-      <Filter>ヘッダー ファイル\battle</Filter>
+      <Filter>ヘッダー ファイル\battle\enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="BigBear.hpp">
+      <Filter>ヘッダー ファイル\battle\enemy\forest</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle.hpp">
+      <Filter>ヘッダー ファイル\event\battle</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

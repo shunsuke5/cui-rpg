@@ -3,11 +3,14 @@
 
 bool BattleCharacter::Turn(BattleCharacter* other)
 {
+    if (IsDie()) { return false; }
+
     UnDefense();
 
+    // TODO: 状態異常の名前も表示するように実装する
     if (StateOperation::IsState(this, State::PARALYSIS)
         || StateOperation::IsState(this, State::SLEEP)) {
-        std::cout << "行動不能" << std::endl;
+        std::cout << "こうどうふのう" << std::endl;
     } else {
         Action(other);
     }
@@ -16,9 +19,5 @@ bool BattleCharacter::Turn(BattleCharacter* other)
         PoisonDamage();
     }
 
-    if (IsDie()) {
-        return false;
-    }
-
-    return true;
+    return !IsDie();
 }

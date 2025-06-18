@@ -40,7 +40,7 @@ public:
         std::cout << m_name << "のこうげき！" << std::endl;
         ability_t damage = CalcAttackDamage(receiver);
         receiver->SetBattleHp(receiver->GetBattleHp() - damage);
-        std::cout << receiver->GetName() << " に" << damage << "ダメージ" << std::endl;
+        std::cout << receiver->GetName() << "に " << damage << " ダメージ" << std::endl;
     }
 
     int CalcAttackDamage(BattleCharacter* receiver)
@@ -56,7 +56,7 @@ public:
     void PoisonDamage()
     {
         int damage = 4;
-        std::cout << m_name << "はどくで" << damage << "ダメージをうけた！" << std::endl;
+        std::cout << m_name << "はどくで " << damage << " ダメージをうけた！" << std::endl;
         SetBattleHp(GetBattleHp() - damage);
     }
 
@@ -73,17 +73,7 @@ public:
         return GetBattleSpeed() >= other->GetBattleSpeed();
     }
 
-    bool IsDie()
-    {
-        if (GetBattleHp() == 0) {
-            DiePrint();
-            return true;
-        }
-        
-        return false;
-    }
-
-    virtual void DiePrint() = 0;
+    bool IsDie() { return GetBattleHp() == 0; }
 
     string GetName() const { return m_name; }
     State& GetState() { return m_state; }
