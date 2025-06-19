@@ -2,20 +2,36 @@
 #define ENEMY_H_
 
 #include "BattleCharacter.hpp"
+#include "RandomNumGenerator.hpp"
 #include <iostream>
+#include <random>
 
 class Enemy : public BattleCharacter
 {
 public:
     using exp_t = unsigned short;
 
-    Enemy(string name, ability_t hp, ability_t mp, ability_t attack, ability_t defense, ability_t speed, exp_t exp)
-        : BattleCharacter(name, hp, mp, attack, defense, speed), m_exp(exp) {}
+    Enemy(Brave& brave, string name, ability_t hp, ability_t mp, ability_t attack, ability_t defense, ability_t speed, exp_t exp)
+        : BattleCharacter(name, hp, mp, attack, defense, speed), m_braveRef(brave), m_exp(exp) {}
     ~Enemy() {}
 
-    void Action(BattleCharacter* brave)
+    virtual void Action(BattleCharacter& brave, int n = 0)
     {
-        Attack(brave);
+        if (n == 0) {
+            n = RandomNumGenerator::Generate(1, 2);
+        }
+
+        switch (n) {
+        case 1:
+            Attack(brave);
+            break;
+        case 2:
+            Defense();
+            break;
+        default:
+            Attack(brave);
+            break;
+        }
     }
 
     void Encount()
@@ -30,6 +46,9 @@ public:
     }
 
     exp_t GetExp() { return m_exp; }
+
+protected:
+    Brave& m_braveRef;
 
 private:
     exp_t m_exp;

@@ -25,7 +25,7 @@ public:
     }
     ~Brave() {}
 
-    void Action(BattleCharacter* enemy)
+    void Action(BattleCharacter& enemy)
     {
         int n = 0;
         std::cout << "1：こうげき　2：ぼうぎょ" << std::endl;

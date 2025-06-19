@@ -12,8 +12,8 @@ using namespace std;
 
 int main()
 {
-    Brave* brave = new Brave("しゅんすけ", 10, 5, 5, 5, 5);
-    Enemy* enemy = new BigBear();
+    Brave brave = Brave("しゅんすけ", 10, 5, 5, 5, 5);
+    BigBear enemy = BigBear(brave);
 
     Battle::BattleEvent(brave, enemy);
 }
