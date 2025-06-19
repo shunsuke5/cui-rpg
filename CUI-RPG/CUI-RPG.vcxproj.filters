@@ -46,6 +46,9 @@
     <Filter Include="ヘッダー ファイル\event\battle">
       <UniqueIdentifier>{9c062947-21bc-40f9-93ff-98bfa25f4135}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ヘッダー ファイル\random">
+      <UniqueIdentifier>{a4609656-e690-468d-92f2-0be0da3540ed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -88,6 +91,9 @@
     </ClInclude>
     <ClInclude Include="Battle.hpp">
       <Filter>ヘッダー ファイル\event\battle</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomNumGenerator.hpp">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
