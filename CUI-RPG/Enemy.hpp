@@ -3,6 +3,7 @@
 
 #include "BattleCharacter.hpp"
 #include <iostream>
+#include <random>
 
 class Enemy : public BattleCharacter
 {
@@ -15,7 +16,19 @@ public:
 
     void Action(BattleCharacter* brave)
     {
-        Attack(brave);
+        std::mt19937 mt{ std::random_device{}() };
+        std::uniform_int_distribution<int> dist(1, 2);
+
+        switch (dist(mt)) {
+        case 1:
+            Attack(brave);
+            break;
+        case 2:
+            Defense();
+            break;
+        default:
+            break;
+        }
     }
 
     void Encount()
