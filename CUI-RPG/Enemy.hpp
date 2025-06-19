@@ -14,7 +14,7 @@ public:
         : BattleCharacter(name, hp, mp, attack, defense, speed), m_exp(exp) {}
     ~Enemy() {}
 
-    void Action(BattleCharacter* brave)
+    void Action(BattleCharacter& brave)
     {
         std::mt19937 mt{ std::random_device{}() };
         std::uniform_int_distribution<int> dist(1, 2);

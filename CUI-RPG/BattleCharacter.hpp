@@ -35,23 +35,23 @@ public:
 
     virtual ~BattleCharacter() {}
 
-    void Attack(BattleCharacter* receiver)
+    void Attack(BattleCharacter& receiver)
     {
         std::cout << m_name << "のこうげき！" << std::endl;
         ability_t damage = CalcAttackDamage(receiver);
-        receiver->SetBattleHp(receiver->GetBattleHp() - damage);
-        std::cout << receiver->GetName() << "に " << damage << " ダメージ" << std::endl;
+        receiver.SetBattleHp(receiver.GetBattleHp() - damage);
+        std::cout << receiver.GetName() << "に " << damage << " ダメージ" << std::endl;
     }
 
-    int CalcAttackDamage(BattleCharacter* receiver)
+    int CalcAttackDamage(BattleCharacter& receiver)
     {
-        ability_t damage = GetBattleAttack() - (receiver->GetBattleDefense() / 2);
-        return receiver->IsDefense() ? damage / 2 : damage;
+        ability_t damage = GetBattleAttack() - (receiver.GetBattleDefense() / 2);
+        return receiver.IsDefense() ? damage / 2 : damage;
     }
 
-    bool Turn(BattleCharacter* other);
+    bool Turn(BattleCharacter& other);
 
-    virtual void Action(BattleCharacter* other) = 0;
+    virtual void Action(BattleCharacter& other) = 0;
 
     void PoisonDamage()
     {
@@ -68,9 +68,9 @@ public:
 
     bool IsDefense() const { return m_isDefense; }
 
-    bool IsFaster(const BattleCharacter* other) const
+    bool IsFaster(const BattleCharacter& other) const
     {
-        return GetBattleSpeed() >= other->GetBattleSpeed();
+        return GetBattleSpeed() >= other.GetBattleSpeed();
     }
 
     bool IsDie() { return GetBattleHp() == 0; }
