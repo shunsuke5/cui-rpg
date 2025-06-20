@@ -4,11 +4,16 @@
 #include "Enemy.hpp"
 #include "RandomNumGenerator.hpp"
 #include <iostream>
+#include <string>
 
 class BigBear : public Enemy
 {
 public:
-    BigBear(Brave& brave) : Enemy(brave, "おおぐま", 5, 0, 3, 3, 3, 10) {}
+    BigBear(Brave& brave, string name, ability_t hp,
+        ability_t mp, ability_t attack, ability_t defense,
+        ability_t speed, exp_t exp)
+        : Enemy(brave, name, hp, mp, attack, defense, speed, exp) {
+    }
 
     void Action(BattleCharacter& brave)
     {
