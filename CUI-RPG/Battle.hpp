@@ -40,6 +40,8 @@ public:
     {
         if (brave.IsDie()) {
             brave.GameOver();
+        } else if(brave.IsEscape() || enemy.IsEscape()) {
+            // 何もしない
         } else {
             enemy.DiePrint();
             brave.OnLevelUp(enemy.GetExp());

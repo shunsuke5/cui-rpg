@@ -17,8 +17,8 @@ public:
 
     void Action(BattleCharacter& brave)
     {
-        int n = RandomNumGenerator::Generate(1, 3);
-        if (n < 3) {
+        int n = RandomNumGenerator::Generate(1, 4);
+        if (n < 4) {
             Enemy::Action(m_braveRef, n);
         } else {
             std::cout << m_name << "はうでをふりまわした！" << std::endl;

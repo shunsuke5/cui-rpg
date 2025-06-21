@@ -6,6 +6,7 @@ bool BattleCharacter::Turn(BattleCharacter& other)
     if (IsDie()) { return false; }
 
     UnDefense();
+    InitIsEscape();
 
     // TODO: 状態異常の名前も表示するように実装する
     if (StateOperation::IsState(*this, State::PARALYSIS)
@@ -19,5 +20,5 @@ bool BattleCharacter::Turn(BattleCharacter& other)
         PoisonDamage();
     }
 
-    return !IsDie();
+    return !IsDie() && !IsEscape();
 }
