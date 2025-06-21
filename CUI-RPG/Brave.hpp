@@ -28,17 +28,21 @@ public:
     void Action(BattleCharacter& enemy)
     {
         int n = 0;
-        std::cout << "1：こうげき　2：ぼうぎょ" << std::endl;
+
+        // TODO: 想定外の値が入力されたときにループさせる例外処理を実装する
+        std::cout << "1：こうげき　2：ぼうぎょ　3：にげる" << std::endl;
         std::cout << m_name << "はどうする？ > " << std::flush;
         std::cin >> n;
 
-        // TODO: 想定外の値が入力されたときにループさせる例外処理を実装する
         switch (n) {
         case 1:
             Attack(enemy);
             break;
         case 2:
             Defense();
+            break;
+        case 3:
+            Escape();
             break;
         default:
             break;

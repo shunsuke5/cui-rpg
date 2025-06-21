@@ -30,7 +30,7 @@ protected:
 
 public:
     BattleCharacter(string name, ability_t hp, ability_t mp, ability_t attack, ability_t defense, ability_t speed)
-        : m_name(name), m_state(State::NORMAL), m_initStatus(hp, mp, attack, defense, speed), m_battleStatus(hp, mp, attack, defense, speed), m_isDefense(false) {
+        : m_name(name), m_state(State::NORMAL), m_initStatus(hp, mp, attack, defense, speed), m_battleStatus(hp, mp, attack, defense, speed), m_isDefense(false), m_isEscape(false) {
     }
 
     virtual ~BattleCharacter() {}
@@ -67,6 +67,16 @@ public:
     }
 
     bool IsDefense() const { return m_isDefense; }
+
+    void Escape()
+    {
+        std::cout << m_name << "はにげだした！" << std::endl;
+        m_isEscape = true;
+    }
+
+    bool IsEscape() const { return m_isEscape; }
+
+    void InitIsEscape() { m_isEscape = false; }
 
     bool IsFaster(const BattleCharacter& other) const
     {
@@ -107,6 +117,7 @@ protected:
     Status m_initStatus;
     Status m_battleStatus;
     bool m_isDefense;
+    bool m_isEscape;
 };
 
 #endif // !BATTLE_CHARACTER_H_

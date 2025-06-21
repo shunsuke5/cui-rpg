@@ -18,7 +18,7 @@ public:
     virtual void Action(BattleCharacter& brave, int n = 0)
     {
         if (n == 0) {
-            n = RandomNumGenerator::Generate(1, 2);
+            n = RandomNumGenerator::Generate(1, 3);
         }
 
         switch (n) {
@@ -27,6 +27,9 @@ public:
             break;
         case 2:
             Defense();
+            break;
+        case 3:
+            Escape();
             break;
         default:
             Attack(brave);
