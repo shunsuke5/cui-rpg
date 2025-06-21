@@ -1,7 +1,7 @@
 #ifndef ENEMY_FACTORY_H_
 #define ENEMY_FACTORY_H_
 
-#include "BigBear.hpp"
+#include "Brave.hpp"
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -24,7 +24,18 @@ public:
         exp_t exp;
     };
 
-    static EnemyData GetData(string name)
+    // CSVファイル内での各データの列位置(先頭の名前を0とする)
+    enum
+    {
+        HP = 1,
+        MP,
+        ATTACK,
+        DEFENSE,
+        SPEED,
+        EXP
+    };
+
+    static EnemyData GetEnemyData(string name)
     {
         std::ifstream file("test.csv");
         if (!file.is_open()) {
@@ -44,48 +55,40 @@ public:
             }
 
         }
-        std::cout << line << std::endl;
 
-        // どうにか上手いことループで回していきたい
         EnemyData enemyData;
-        line = line.substr(line.find(',') + 1);
-        enemyData.hp = std::stoi(line.substr(0, line.find(',')));
+        int column = HP;
 
-        line = line.substr(line.find(',') + 1);
-        enemyData.mp = std::stoi(line.substr(0, line.find(',')));
+        while (column <= EXP) {
+            line = line.substr(line.find(',') + 1);
+            int status = std::stoi(line.substr(0, line.find(',')));
 
-        line = line.substr(line.find(',') + 1);
-        enemyData.attack = std::stoi(line.substr(0, line.find(',')));
+            switch (column) {
+            case HP:
+                enemyData.hp = status;
+                break;
+            case MP:
+                enemyData.mp = status;
+                break;
+            case ATTACK:
+                enemyData.attack = status;
+                break;
+            case DEFENSE:
+                enemyData.defense = status;
+                break;
+            case SPEED:
+                enemyData.speed = status;
+                break;
+            case EXP:
+                enemyData.exp = status;
+                break;
+            }
 
-        line = line.substr(line.find(',') + 1);
-        enemyData.defense = std::stoi(line.substr(0, line.find(',')));
-
-        line = line.substr(line.find(',') + 1);
-        enemyData.speed = std::stoi(line.substr(0, line.find(',')));
-
-        line = line.substr(line.find(',') + 1);
-        enemyData.exp = std::stoi(line.substr(0, line.find(',')));
-
-        //string lastParam = line.substr(line.rfind(','));
-        //string a = line.substr(0, line.find(','));
-        //while (a != lastParam) {
-
-        //}
+            ++column;
+        }
 
         file.close();
         return enemyData;
-    }
-
-    // TODO: 戻り値を参照やらポインタにした方が
-    // コピーが発生しなくて効率が良さそうなので
-    // もし変えられそうなら変える
-    static BigBear GenerateBigBear(Brave& brave)
-    {
-        string name = "おおぐま";
-        EnemyData bigBear = GetData(name);
-        return BigBear(brave, name,
-            bigBear.hp, bigBear.mp, bigBear.attack,
-            bigBear.defense, bigBear.speed, bigBear.exp);
     }
 };
 
