@@ -3,6 +3,7 @@
 
 #include "BattleCharacter.hpp"
 #include <iostream>
+#include <limits>
 #include <map>
 
 class Brave : public BattleCharacter
@@ -29,10 +30,14 @@ public:
     {
         int n = 0;
 
-        // TODO: 想定外の値が入力されたときにループさせる例外処理を実装する
         std::cout << "1：こうげき　2：ぼうぎょ　3：にげる" << std::endl;
         std::cout << m_name << "はどうする？ > " << std::flush;
-        std::cin >> n;
+
+        while (!(std::cin >> n) || n < 1 || n > 3) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << m_name << "はどうする？ > " << std::flush;
+        }
 
         switch (n) {
         case 1:
