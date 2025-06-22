@@ -24,11 +24,4 @@ int main()
     PoisonSnake snake = ForestEnemyFactory::GeneratePoisonSnake(brave);
     Battle::BattleEvent(brave, snake);
     cout << (int)brave.GetState() << endl;
-
-    // 必要経験値をざっくり計算したやつ(後々調整する)
-    int exp = 3;
-    for (int i = 2; i < 21; ++i) {
-        cout << "レベル：" << i << ", 経験値：" << exp << endl;
-        exp *= 1.75;
-    }
 }

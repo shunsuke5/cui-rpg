@@ -20,68 +20,18 @@ public:
         m_exp = 0;
 
         m_levelToExp = GenerateLevelToExp();
-
-        // 想定通りファイルから値が格納されているかの確認
-        for (auto i = m_levelToExp.begin(); i != m_levelToExp.end(); ++i) {
-            std::cout << i->first << " " << i->second << std::endl;
-        }
     }
     ~Brave() {}
 
     static map GenerateLevelToExp();
 
-    void Action(BattleCharacter& enemy)
-    {
-        int n = 0;
-
-        std::cout << "1：こうげき　2：ぼうぎょ　3：にげる" << std::endl;
-        std::cout << m_name << "はどうする？ > " << std::flush;
-
-        while (!(std::cin >> n) || n < 1 || n > 3) {
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            std::cout << m_name << "はどうする？ > " << std::flush;
-        }
-
-        switch (n) {
-        case 1:
-            Attack(enemy);
-            break;
-        case 2:
-            Defense();
-            break;
-        case 3:
-            Escape();
-            break;
-        default:
-            break;
-        }
-    }
+    void Action(BattleCharacter& enemy);
 
     bool IsLevelUp() { return m_exp >= m_levelToExp.at(m_level + 1); }
 
-    void OnLevelUp(exp_t exp)
-    {
-        // 最大レベルは20とする
-        const level_t MAX_LEVEL = 20;
+    void OnLevelUp(exp_t exp);
 
-        m_exp += exp;
-        level_t beforeLevel = m_level;
-
-        while (m_level != MAX_LEVEL && IsLevelUp()) {
-            ++m_level;
-        }
-
-        int upLevel = m_level - beforeLevel;
-        if (upLevel != 0) {
-            std::cout << m_name << "のレベルが " << upLevel << " あがった！" << std::endl;
-        }
-    }
-
-    void GameOver()
-    {
-        std::cout << m_name << "はしんでしまった！" << std::endl;
-    }
+    void GameOver() { std::cout << m_name << "はしんでしまった！" << std::endl; }
 
 private:
     level_t m_level;
