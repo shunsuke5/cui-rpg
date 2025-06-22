@@ -17,7 +17,7 @@ public:
 
     void Action(BattleCharacter& brave)
     {
-        int n = RandomNumGenerator::Generate(1, 4);
+        int n = RandomNumGenerator::FromOneToMax(BASE_ACTION_COUNT + 1);
         if (n <= BASE_ACTION_COUNT) {
             Enemy::Action(m_braveRef, n);
         } else {

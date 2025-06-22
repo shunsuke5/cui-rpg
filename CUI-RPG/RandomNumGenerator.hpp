@@ -6,10 +6,17 @@
 class RandomNumGenerator
 {
 public:
-    static int Generate(int min, int max)
+    static int FromMinToMax(int min, int max)
     {
         std::mt19937 mt{ std::random_device{}() };
         std::uniform_int_distribution<int> dist(min, max);
+        return dist(mt);
+    }
+
+    static int FromOneToMax(int max)
+    {
+        std::mt19937 mt{ std::random_device{}() };
+        std::uniform_int_distribution<int> dist(1, max);
         return dist(mt);
     }
 };

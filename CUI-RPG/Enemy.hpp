@@ -19,7 +19,7 @@ public:
     virtual void Action(BattleCharacter& brave, int n = 0)
     {
         if (n == 0 || n > BASE_ACTION_COUNT) {
-            n = RandomNumGenerator::Generate(1, 3);
+            n = RandomNumGenerator::FromOneToMax(BASE_ACTION_COUNT);
         }
 
         switch (n) {
