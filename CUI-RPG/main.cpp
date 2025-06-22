@@ -17,7 +17,12 @@ using namespace std;
 int main()
 {
     Brave brave = Brave("しゅんすけ", 10, 5, 5, 5, 5);
-    BigBear enemy = ForestEnemyFactory::GenerateBigBear(brave);
 
-    Battle::BattleEvent(brave, enemy);
+    BigBear bear = ForestEnemyFactory::GenerateBigBear(brave);
+    Battle::BattleEvent(brave, bear);
+
+    PoisonSnake snake = ForestEnemyFactory::GeneratePoisonSnake(brave);
+    Battle::BattleEvent(brave, snake);
+
+    cout << (int)brave.GetState() << endl;
 }

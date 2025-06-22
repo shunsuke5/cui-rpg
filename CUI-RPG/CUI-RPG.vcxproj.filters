@@ -92,14 +92,17 @@
     <ClInclude Include="Battle.hpp">
       <Filter>ヘッダー ファイル\event\battle</Filter>
     </ClInclude>
-    <ClInclude Include="RandomNumGenerator.hpp">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="EnemyFactory.hpp">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\battle\enemy</Filter>
     </ClInclude>
     <ClInclude Include="ForestEnemyFactory.hpp">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\battle\enemy\forest</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomNumGenerator.hpp">
+      <Filter>ヘッダー ファイル\random</Filter>
+    </ClInclude>
+    <ClInclude Include="PoisonSnake.hpp">
+      <Filter>ヘッダー ファイル\battle\enemy\forest</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

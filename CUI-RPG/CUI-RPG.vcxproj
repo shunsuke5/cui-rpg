@@ -139,6 +139,7 @@
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="EnemyFactory.hpp" />
     <ClInclude Include="ForestEnemyFactory.hpp" />
+    <ClInclude Include="PoisonSnake.hpp" />
     <ClInclude Include="RandomNumGenerator.hpp" />
     <ClInclude Include="State.hpp" />
     <ClInclude Include="BattleCharacter.hpp" />

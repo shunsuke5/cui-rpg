@@ -23,6 +23,7 @@ public:
         m_levelToExp.insert(std::make_pair(3, 5));
         m_levelToExp.insert(std::make_pair(4, 8));
         m_levelToExp.insert(std::make_pair(5, 15));
+        m_levelToExp.insert(std::make_pair(6, 20));
     }
     ~Brave() {}
 
@@ -58,6 +59,8 @@ public:
 
     void OnLevelUp(exp_t exp)
     {
+        const level_t MAX_LEVEL = 99;
+
         m_exp += exp;
         level_t beforeLevel = m_level;
 
@@ -77,7 +80,6 @@ public:
     }
 
 private:
-    const level_t MAX_LEVEL = 99;
     level_t m_level;
     exp_t m_exp;
     map m_levelToExp;
