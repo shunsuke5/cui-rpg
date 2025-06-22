@@ -63,9 +63,6 @@
     <ClCompile Include="State.cpp">
       <Filter>ソース ファイル\state</Filter>
     </ClCompile>
-    <ClCompile Include="StateOperation.cpp">
-      <Filter>ソース ファイル\state</Filter>
-    </ClCompile>
     <ClCompile Include="BattleCharacter.cpp">
       <Filter>ソース ファイル\battle</Filter>
     </ClCompile>
@@ -81,9 +78,6 @@
       <Filter>ヘッダー ファイル\display</Filter>
     </ClInclude>
     <ClInclude Include="State.hpp">
-      <Filter>ヘッダー ファイル\state</Filter>
-    </ClInclude>
-    <ClInclude Include="StateOperation.hpp">
       <Filter>ヘッダー ファイル\state</Filter>
     </ClInclude>
     <ClInclude Include="Brave.hpp">

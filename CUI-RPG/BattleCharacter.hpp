@@ -89,15 +89,15 @@ public:
     State& GetState() { return m_state; }
     const State& GetState() const { return m_state; }
 
-    const ability_t GetInitHp() const { return m_initStatus.hp; }
-    const ability_t GetInitAttack() const { return m_initStatus.attack; }
-    const ability_t GetInitDefense() const { return m_initStatus.defense; }
-    const ability_t GetInitSpeed() const { return m_initStatus.speed; }
+    ability_t GetInitHp() const { return m_initStatus.hp; }
+    ability_t GetInitAttack() const { return m_initStatus.attack; }
+    ability_t GetInitDefense() const { return m_initStatus.defense; }
+    ability_t GetInitSpeed() const { return m_initStatus.speed; }
 
-    const ability_t GetBattleHp() const { return m_battleStatus.hp; }
-    const ability_t GetBattleAttack() const { return m_battleStatus.attack; }
-    const ability_t GetBattleDefense() const { return m_battleStatus.defense; }
-    const ability_t GetBattleSpeed() const { return m_battleStatus.speed; }
+    ability_t GetBattleHp() const { return m_battleStatus.hp; }
+    ability_t GetBattleAttack() const { return m_battleStatus.attack; }
+    ability_t GetBattleDefense() const { return m_battleStatus.defense; }
+    ability_t GetBattleSpeed() const { return m_battleStatus.speed; }
 
     Status& GetInitStatus() { return m_initStatus; }
     Status& GetBattleStatus() { return m_battleStatus; }
@@ -106,7 +106,10 @@ public:
 
     void SetBattleHp(ability_t hp) { m_battleStatus.hp = (hp < 0) ? 0 : hp; }
     void SetBattleDefense(ability_t defense) { m_battleStatus.defense = defense; }
-    void SetState(State state) { m_state = state; }
+
+    void SetState(State abnormal) { m_state = (m_state | abnormal); }
+    void RemoveState(State abnormal) { m_state = (m_state & ~abnormal); }
+    bool IsState(State abnormal) const { return (m_state & abnormal) == abnormal; }
 
 private:
     void UnDefense() { m_isDefense = false; }
