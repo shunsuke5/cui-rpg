@@ -3,6 +3,7 @@
 
 #include "BattleCharacter.hpp"
 #include <iostream>
+#include <limits>
 #include <map>
 
 class Brave : public BattleCharacter
@@ -18,21 +19,29 @@ public:
         m_level = 1;
         m_exp = 0;
 
-        m_levelToExp.insert(std::make_pair(2, 3));
-        m_levelToExp.insert(std::make_pair(3, 5));
-        m_levelToExp.insert(std::make_pair(4, 8));
-        m_levelToExp.insert(std::make_pair(5, 15));
+        m_levelToExp = GenerateLevelToExp();
+
+        // 想定通りファイルから値が格納されているかの確認
+        for (auto i = m_levelToExp.begin(); i != m_levelToExp.end(); ++i) {
+            std::cout << i->first << " " << i->second << std::endl;
+        }
     }
     ~Brave() {}
+
+    static map GenerateLevelToExp();
 
     void Action(BattleCharacter& enemy)
     {
         int n = 0;
 
-        // TODO: 想定外の値が入力されたときにループさせる例外処理を実装する
         std::cout << "1：こうげき　2：ぼうぎょ　3：にげる" << std::endl;
         std::cout << m_name << "はどうする？ > " << std::flush;
-        std::cin >> n;
+
+        while (!(std::cin >> n) || n < 1 || n > 3) {
+            std::cin.clear();
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            std::cout << m_name << "はどうする？ > " << std::flush;
+        }
 
         switch (n) {
         case 1:
@@ -53,6 +62,9 @@ public:
 
     void OnLevelUp(exp_t exp)
     {
+        // 最大レベルは20とする
+        const level_t MAX_LEVEL = 20;
+
         m_exp += exp;
         level_t beforeLevel = m_level;
 
@@ -72,7 +84,6 @@ public:
     }
 
 private:
-    const level_t MAX_LEVEL = 99;
     level_t m_level;
     exp_t m_exp;
     map m_levelToExp;

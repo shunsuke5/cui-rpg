@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BattleCharacter.cpp" />
+    <ClCompile Include="Brave.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PrintCoordinate.cpp" />
     <ClCompile Include="State.cpp" />
@@ -139,6 +140,7 @@
     <ClInclude Include="Enemy.hpp" />
     <ClInclude Include="EnemyFactory.hpp" />
     <ClInclude Include="ForestEnemyFactory.hpp" />
+    <ClInclude Include="PoisonSnake.hpp" />
     <ClInclude Include="RandomNumGenerator.hpp" />
     <ClInclude Include="State.hpp" />
     <ClInclude Include="BattleCharacter.hpp" />

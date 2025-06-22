@@ -3,6 +3,7 @@
 
 #include "EnemyFactory.hpp"
 #include "BigBear.hpp"
+#include "PoisonSnake.hpp"
 #include <string>
 
 class ForestEnemyFactory : public EnemyFactory
@@ -16,6 +17,16 @@ public:
         return BigBear(brave, name,
             bigBear.hp, bigBear.mp, bigBear.attack,
             bigBear.defense, bigBear.speed, bigBear.exp);
+    }
+
+    static PoisonSnake GeneratePoisonSnake(Brave& brave)
+    {
+        string name = "どくへび";
+        EnemyData poisonSnake = GetEnemyData(name);
+
+        return PoisonSnake(brave, name,
+            poisonSnake.hp, poisonSnake.mp, poisonSnake.attack,
+            poisonSnake.defense, poisonSnake.speed, poisonSnake.exp);
     }
 };
 

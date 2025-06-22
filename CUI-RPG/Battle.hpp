@@ -13,6 +13,7 @@ public:
         AfterBattle(brave, enemy);
     }
 
+private:
     static void BattleLoop(Brave& brave, Enemy& enemy)
     {
         enemy.Encount();

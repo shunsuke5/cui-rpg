@@ -55,7 +55,7 @@ public:
 
     void PoisonDamage()
     {
-        int damage = 4;
+        int damage = 2;
         std::cout << m_name << "はどくで " << damage << " ダメージをうけた！" << std::endl;
         SetBattleHp(GetBattleHp() - damage);
     }

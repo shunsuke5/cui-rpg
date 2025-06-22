@@ -37,7 +37,7 @@ public:
 
     static EnemyData GetEnemyData(string name)
     {
-        std::ifstream file("test.csv");
+        std::ifstream file("enemy.csv");
         if (!file.is_open()) {
             std::cerr << "can't open file" << std::endl;
             std::exit(EXIT_FAILURE);

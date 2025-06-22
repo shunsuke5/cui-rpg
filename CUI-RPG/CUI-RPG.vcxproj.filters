@@ -49,6 +49,9 @@
     <Filter Include="ヘッダー ファイル\random">
       <UniqueIdentifier>{a4609656-e690-468d-92f2-0be0da3540ed}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\battle\brave">
+      <UniqueIdentifier>{599f0ecc-c697-4680-80bc-106bed7952e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -65,6 +68,9 @@
     </ClCompile>
     <ClCompile Include="BattleCharacter.cpp">
       <Filter>ソース ファイル\battle</Filter>
+    </ClCompile>
+    <ClCompile Include="Brave.cpp">
+      <Filter>ソース ファイル\battle\brave</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -92,14 +98,17 @@
     <ClInclude Include="Battle.hpp">
       <Filter>ヘッダー ファイル\event\battle</Filter>
     </ClInclude>
-    <ClInclude Include="RandomNumGenerator.hpp">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="EnemyFactory.hpp">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\battle\enemy</Filter>
     </ClInclude>
     <ClInclude Include="ForestEnemyFactory.hpp">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\battle\enemy\forest</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomNumGenerator.hpp">
+      <Filter>ヘッダー ファイル\random</Filter>
+    </ClInclude>
+    <ClInclude Include="PoisonSnake.hpp">
+      <Filter>ヘッダー ファイル\battle\enemy\forest</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
