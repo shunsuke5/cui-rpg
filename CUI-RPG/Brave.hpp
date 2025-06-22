@@ -19,13 +19,16 @@ public:
         m_level = 1;
         m_exp = 0;
 
-        m_levelToExp.insert(std::make_pair(2, 3));
-        m_levelToExp.insert(std::make_pair(3, 5));
-        m_levelToExp.insert(std::make_pair(4, 8));
-        m_levelToExp.insert(std::make_pair(5, 15));
-        m_levelToExp.insert(std::make_pair(6, 20));
+        m_levelToExp = GenerateLevelToExp();
+
+        // 想定通りファイルから値が格納されているかの確認
+        for (auto i = m_levelToExp.begin(); i != m_levelToExp.end(); ++i) {
+            std::cout << i->first << " " << i->second << std::endl;
+        }
     }
     ~Brave() {}
+
+    static map GenerateLevelToExp();
 
     void Action(BattleCharacter& enemy)
     {
@@ -59,7 +62,8 @@ public:
 
     void OnLevelUp(exp_t exp)
     {
-        const level_t MAX_LEVEL = 99;
+        // 最大レベルは20とする
+        const level_t MAX_LEVEL = 20;
 
         m_exp += exp;
         level_t beforeLevel = m_level;
