@@ -132,7 +132,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PrintCoordinate.cpp" />
     <ClCompile Include="State.cpp" />
-    <ClCompile Include="StateOperation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Battle.hpp" />
@@ -146,7 +145,6 @@
     <ClInclude Include="BattleCharacter.hpp" />
     <ClInclude Include="Brave.hpp" />
     <ClInclude Include="PrintCoordinate.hpp" />
-    <ClInclude Include="StateOperation.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

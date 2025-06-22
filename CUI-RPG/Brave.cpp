@@ -57,8 +57,6 @@ void Brave::Action(BattleCharacter& enemy)
     case 3:
         Escape();
         break;
-    default:
-        break;
     }
 }
 
@@ -77,4 +75,11 @@ void Brave::OnLevelUp(exp_t exp)
     if (upLevel != 0) {
         std::cout << m_name << "のレベルが " << upLevel << " あがった！" << std::endl;
     }
+}
+
+void Brave::RestoreStatus()
+{
+    m_battleStatus.attack = m_initStatus.attack;
+    m_battleStatus.defense = m_initStatus.defense;
+    m_battleStatus.speed = m_initStatus.speed;
 }

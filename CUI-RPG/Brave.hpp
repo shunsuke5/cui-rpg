@@ -31,6 +31,8 @@ public:
 
     void OnLevelUp(exp_t exp);
 
+    void RestoreStatus();
+
     void GameOver() { std::cout << m_name << "はしんでしまった！" << std::endl; }
 
 private:

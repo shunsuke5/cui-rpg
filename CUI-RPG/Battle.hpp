@@ -46,6 +46,7 @@ private:
         } else {
             enemy.DiePrint();
             brave.OnLevelUp(enemy.GetExp());
+            brave.RestoreStatus();
         }
     }
 };

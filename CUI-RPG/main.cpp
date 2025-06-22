@@ -2,7 +2,6 @@
 #include "Brave.hpp"
 #include "Enemy.hpp"
 #include "State.hpp"
-#include "StateOperation.hpp"
 #include "BattleCharacter.hpp"
 #include "BigBear.hpp"
 #include "Battle.hpp"
