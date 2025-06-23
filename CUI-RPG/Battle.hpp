@@ -3,52 +3,16 @@
 
 #include "BattleCharacter.hpp"
 #include "Brave.hpp"
+#include "Enemy.hpp"
 
 class Battle
 {
 public:
-    static void BattleEvent(Brave& brave, Enemy& enemy)
-    {
-        BattleLoop(brave, enemy);
-        AfterBattle(brave, enemy);
-    }
+    static void BattleEvent(Brave& brave, Enemy& enemy);
 
 private:
-    static void BattleLoop(Brave& brave, Enemy& enemy)
-    {
-        enemy.Encount();
-
-        while (!brave.IsDie() && !enemy.IsDie()) {
-            if (brave.IsFaster(enemy)) {
-                if (!brave.Turn(enemy)) {
-                    break;
-                }
-                if (!enemy.Turn(brave)) {
-                    break;
-                }
-            } else {
-                if (!enemy.Turn(brave)) {
-                    break;
-                }
-                if (!brave.Turn(enemy)) {
-                    break;
-                }
-            }
-        }
-    }
-
-    static void AfterBattle(Brave& brave, Enemy& enemy)
-    {
-        if (brave.IsDie()) {
-            brave.GameOver();
-        } else if(brave.IsEscape() || enemy.IsEscape()) {
-            // 何もしない
-        } else {
-            enemy.DiePrint();
-            brave.OnLevelUp(enemy.GetExp());
-            brave.RestoreStatus();
-        }
-    }
+    static void BattleLoop(Brave& brave, Enemy& enemy);
+    static void AfterBattle(Brave& brave, Enemy& enemy);
 };
 
 #endif // !BATTLE_H_
