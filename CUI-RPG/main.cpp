@@ -22,5 +22,17 @@ int main()
 
     PoisonSnake snake = ForestEnemyFactory::GeneratePoisonSnake(brave);
     Battle::BattleEvent(brave, snake);
-    cout << (int)brave.GetState() << endl;
+
+    ifstream file("leveltable.csv");
+    if (!file.is_open()) {
+        cerr << "can't open file" << endl;
+        exit(EXIT_FAILURE);
+    }
+
+    string line;
+    file.seekg(77);
+
+    while (getline(file, line)) {
+        cout << line << "   " << file.tellg() << endl;
+    }
 }

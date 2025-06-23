@@ -52,6 +52,12 @@
     <Filter Include="ソース ファイル\battle\brave">
       <UniqueIdentifier>{599f0ecc-c697-4680-80bc-106bed7952e4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\event">
+      <UniqueIdentifier>{2b3fdfac-5367-4017-8d20-95ce159a0056}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\battle\enemy">
+      <UniqueIdentifier>{78b61970-c95f-46e4-9464-057f9e3dfddb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -68,6 +74,15 @@
     </ClCompile>
     <ClCompile Include="Brave.cpp">
       <Filter>ソース ファイル\battle\brave</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle.cpp">
+      <Filter>ソース ファイル\event</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>ソース ファイル\battle\enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyFactory.cpp">
+      <Filter>ソース ファイル\battle\enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

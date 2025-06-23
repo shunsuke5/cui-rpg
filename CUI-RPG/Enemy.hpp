@@ -2,6 +2,7 @@
 #define ENEMY_H_
 
 #include "BattleCharacter.hpp"
+#include "Brave.hpp"
 #include "RandomNumGenerator.hpp"
 #include <iostream>
 #include <random>
@@ -16,24 +17,9 @@ public:
     }
     ~Enemy() {}
 
-    virtual void Action(BattleCharacter& brave, int n = 0)
-    {
-        if (n == 0 || n > BASE_ACTION_COUNT) {
-            n = RandomNumGenerator::FromOneToMax(BASE_ACTION_COUNT);
-        }
+    virtual void InitBattleStatus();
 
-        switch (n) {
-        case 1:
-            Attack(brave);
-            break;
-        case 2:
-            Defense();
-            break;
-        case 3:
-            Escape();
-            break;
-        }
-    }
+    virtual void Action(BattleCharacter& brave, int n = 0);
 
     void Encount() { std::cout << m_name << "があらわれた！" << std::endl; }
 

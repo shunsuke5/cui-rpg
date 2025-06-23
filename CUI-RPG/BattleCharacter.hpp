@@ -30,10 +30,12 @@ protected:
 
 public:
     BattleCharacter(string name, ability_t hp, ability_t mp, ability_t attack, ability_t defense, ability_t speed)
-        : m_name(name), m_state(State::NORMAL), m_initStatus(hp, mp, attack, defense, speed), m_battleStatus(hp, mp, attack, defense, speed), m_isDefense(false), m_isEscape(false) {
+        : m_name(name), m_state(State::NORMAL), m_defaultStatus(hp, mp, attack, defense, speed), m_battleStatus(hp, mp, attack, defense, speed), m_isDefense(false), m_isEscape(false) {
     }
 
     virtual ~BattleCharacter() {}
+
+    virtual void InitBattleStatus() = 0;
 
     void Attack(BattleCharacter& receiver)
     {
@@ -89,23 +91,28 @@ public:
     State& GetState() { return m_state; }
     const State& GetState() const { return m_state; }
 
-    ability_t GetInitHp() const { return m_initStatus.hp; }
-    ability_t GetInitAttack() const { return m_initStatus.attack; }
-    ability_t GetInitDefense() const { return m_initStatus.defense; }
-    ability_t GetInitSpeed() const { return m_initStatus.speed; }
+    ability_t GetDefaultHp() const { return m_defaultStatus.hp; }
+    ability_t GetDefaultMp() const { return m_defaultStatus.mp; }
+    ability_t GetDefaultAttack() const { return m_defaultStatus.attack; }
+    ability_t GetDefaultDefense() const { return m_defaultStatus.defense; }
+    ability_t GetDefaultSpeed() const { return m_defaultStatus.speed; }
 
     ability_t GetBattleHp() const { return m_battleStatus.hp; }
+    ability_t GetBattleMp() const { return m_battleStatus.mp; }
     ability_t GetBattleAttack() const { return m_battleStatus.attack; }
     ability_t GetBattleDefense() const { return m_battleStatus.defense; }
     ability_t GetBattleSpeed() const { return m_battleStatus.speed; }
 
-    Status& GetInitStatus() { return m_initStatus; }
+    Status& GetDefaultStatus() { return m_defaultStatus; }
+    const Status& GetDefaultStatus() const { return m_defaultStatus; }
     Status& GetBattleStatus() { return m_battleStatus; }
-    const Status& GetInitStatus() const { return m_initStatus; }
     const Status& GetBattleStatus() const { return m_battleStatus; }
 
     void SetBattleHp(ability_t hp) { m_battleStatus.hp = (hp < 0) ? 0 : hp; }
+    void SetBattleMp(ability_t mp) { m_battleStatus.mp = (mp < 0) ? 0 : mp; }
+    void SetBattleAttack(ability_t attack) { m_battleStatus.attack = attack; }
     void SetBattleDefense(ability_t defense) { m_battleStatus.defense = defense; }
+    void SetBattleSpeed(ability_t speed) { m_battleStatus.speed = speed; }
 
     void SetState(State abnormal) { m_state = (m_state | abnormal); }
     void RemoveState(State abnormal) { m_state = (m_state & ~abnormal); }
@@ -116,9 +123,9 @@ private:
 
 protected:
     string m_name;
-    State m_state;
-    Status m_initStatus;
+    Status m_defaultStatus;
     Status m_battleStatus;
+    State m_state;
     bool m_isDefense;
     bool m_isEscape;
 };

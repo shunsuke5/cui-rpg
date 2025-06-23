@@ -3,6 +3,7 @@
 
 #include "BattleCharacter.hpp"
 #include <iostream>
+#include <fstream>
 #include <limits>
 #include <map>
 
@@ -19,27 +20,38 @@ public:
         m_level = 1;
         m_exp = 0;
 
-        m_levelToExp = GenerateLevelToExp();
+        //m_levelToExp = GenerateLevelToExp();
     }
     ~Brave() {}
 
-    static map GenerateLevelToExp();
+    //static map GenerateLevelToExp();
+
+    std::streampos Init();
+
+    void InitBattleStatus();
 
     void Action(BattleCharacter& enemy);
 
-    bool IsLevelUp() { return m_exp >= m_levelToExp.at(m_level + 1); }
+    bool IsLevelUp();
 
     void OnLevelUp(exp_t exp);
 
-    void RestoreStatus();
+    void ReflectHpAndMp();
 
     void GameOver() { std::cout << m_name << "はしんでしまった！" << std::endl; }
+
+    ability_t GetHp() { return m_hp; }
+    ability_t GetMp() { return m_mp; }
+    void SetHp(ability_t hp) { m_hp = (hp < 0) ? 0 : hp; }
+    void SetMp(ability_t mp) { m_mp = (mp < 0) ? 0 : mp; }
 
 private:
     level_t m_level;
     exp_t m_exp;
-    map m_levelToExp;
-    // TODO: レベルに対応するステータス表をメンバとして実装する
+    ability_t m_hp;
+    ability_t m_mp;
+    //map m_levelToExp;
+    std::streampos m_nextLevel;
 };
 
 #endif // !BRAVE_H_

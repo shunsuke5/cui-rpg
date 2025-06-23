@@ -8,30 +8,55 @@ using namespace std;
 
 using level_t = unsigned short;
 using exp_t = unsigned short;
+using ability_t = signed short;
 using string = string;
 
-map<level_t, exp_t> Brave::GenerateLevelToExp()
+struct BraveData
+{
+    level_t level;
+    exp_t exp;
+    ability_t hp;
+    ability_t mp;
+    ability_t attack;
+    ability_t defense;
+    ability_t speed;
+};
+
+enum
+{
+    HP = 1,
+    MP,
+    ATTACK,
+    DEFENSE,
+    SPEED,
+    EXP
+};
+
+std::streampos Brave::Init()
 {
     ifstream file("leveltable.csv");
     if (!file.is_open()) {
-        cerr << "can't open file" << endl;
+        std::cerr << "can't open file" << std::endl;
         exit(EXIT_FAILURE);
     }
 
-    map levelToExp;
     string line;
-    level_t level;
-    exp_t exp;
-    getline(file, line);
+    do {
+        getline(file, line);
+    } while (line.front() != '1');
 
-    while (getline(file, line)) {
-        level = stoi(line.substr(0, line.find(',')));
-        exp = stoi(line.substr(line.find(',') + 1));
+    // 勇者の初期ステータスを設定する処理
 
-        levelToExp.insert(std::make_pair(level, exp));
-    }
+    m_nextLevel = file.tellg();
+}
 
-    return levelToExp;
+void Brave::InitBattleStatus()
+{
+    m_battleStatus.hp = m_hp;
+    m_battleStatus.mp = m_mp;
+    m_battleStatus.attack = m_defaultStatus.attack;
+    m_battleStatus.defense = m_defaultStatus.defense;
+    m_battleStatus.speed = m_defaultStatus.speed;
 }
 
 void Brave::Action(BattleCharacter& enemy)
@@ -60,6 +85,22 @@ void Brave::Action(BattleCharacter& enemy)
     }
 }
 
+bool Brave::IsLevelUp()
+{
+    ifstream file("leveltable.csv");
+    if (!file.is_open()) {
+        std::cerr << "can't open file" << std::endl;
+        exit(EXIT_FAILURE);
+    }
+
+    string line;
+    file.seekg(m_nextLevel);
+
+    while (getline(file, line)) {
+        std::cout << line << "   " << file.tellg() << std::endl;
+    }
+}
+
 void Brave::OnLevelUp(exp_t exp)
 {
     const level_t MAX_LEVEL = 20;
@@ -77,9 +118,8 @@ void Brave::OnLevelUp(exp_t exp)
     }
 }
 
-void Brave::RestoreStatus()
+void Brave::ReflectHpAndMp()
 {
-    m_battleStatus.attack = m_initStatus.attack;
-    m_battleStatus.defense = m_initStatus.defense;
-    m_battleStatus.speed = m_initStatus.speed;
+    m_hp = m_battleStatus.hp;
+    m_mp = m_battleStatus.mp;
 }

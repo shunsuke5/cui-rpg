@@ -127,8 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Battle.cpp" />
     <ClCompile Include="BattleCharacter.cpp" />
     <ClCompile Include="Brave.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyFactory.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PrintCoordinate.cpp" />
     <ClCompile Include="State.cpp" />
